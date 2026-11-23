@@ -1,0 +1,33 @@
+﻿{% extends "base.html" %}
+
+{% block titulo %}Comparar Nombres{% endblock %}
+
+{% block contenido %}
+<h2>Comparación de Nombres</h2>
+
+<form method="POST">
+    <label for="nombre1">Nombre 1:</label>
+    <input type="text" id="nombre1" name="nombre1" required>
+
+    <label for="nombre2">Nombre 2:</label>
+    <input type="text" id="nombre2" name="nombre2" required>
+
+    <label for="nombre3">Nombre 3:</label>
+    <input type="text" id="nombre3" name="nombre3" required>
+
+    <button type="submit" class="btn-enviar">Enviar</button>
+</form>
+
+{% if error %}
+    <div class="error">{{ error }}</div>
+{% endif %}
+
+{% if nombre_mayor and cantidad_caracteres is not none %}
+    <div class="resultado">
+        <p>El nombre con mayor cantidad de caracteres es : {{ nombre_mayor }}</p>
+        <p>El nombre tiene : {{ cantidad_caracteres }} caracteres</p>
+    </div>
+{% endif %}
+
+<a class="volver" href="{{ url_for('index') }}">← Volver al menú</a>
+{% endblock %}
